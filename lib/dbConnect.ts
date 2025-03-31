@@ -36,8 +36,7 @@ async function dbConnect() {
 		throw e;
 	}
 
-	console.log("hello");
-
+	console.log("DB connected");
 	return cached.conn;
 }
 
