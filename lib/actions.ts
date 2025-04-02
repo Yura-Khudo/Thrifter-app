@@ -16,13 +16,11 @@ export async function updateDB(state: any, formData: FormData) {
 
 ///////////////////
 
-export async function createProduct(state: any, formData: FormData) {
-	const title = formData.get("title");
-
+export async function sellClothing(state: any, formData: FormData) {
 	await dbConnect();
 
 	// const product = await Product.create({ title });
-	const product = new Clothing({ title });
-	await product.save();
-	console.log(product);
+	const clothing = new Clothing({});
+	// await clothing.save();
+	console.log(clothing);
 }

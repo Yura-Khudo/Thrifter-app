@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const NavBar: React.FC = () => {
 	return (
 		<nav
@@ -62,7 +64,9 @@ const NavBar: React.FC = () => {
 						alignItems: "center",
 					}}
 				>
-					<p>Sell clothes</p>
+					<Link style={{ textDecoration: "none", color: "black" }} href="/sell">
+						Sell clothes
+					</Link>
 				</div>
 			</div>
 		</nav>

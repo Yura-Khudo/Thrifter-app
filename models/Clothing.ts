@@ -1,7 +1,13 @@
 import mongoose from "mongoose";
 
-export interface ProudctInt extends mongoose.Document {
-	title: string;
+export interface ClothingInt extends mongoose.Document {
+	type: string;
+	name: string;
+	color: string;
+	price: number;
+	negotiablePrice: boolean;
+	condition: string;
+	size: string;
 }
 
 export const typesOfClothes = [
@@ -16,40 +22,45 @@ export const typesOfClothes = [
 export const conditionsOfClothes = ["Brand new", "Pre-owned", "Restored"];
 export const sizeOfClothes = ["XS", "S", "M", "L", "XL"];
 
-const ClothingSchema = new mongoose.Schema({
-	type: {
-		type: String,
-		enum: typesOfClothes,
-		required: true,
+const ClothingSchema = new mongoose.Schema(
+	{
+		type: {
+			type: String,
+			enum: typesOfClothes,
+			required: true,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		color: {
+			type: String,
+			required: true,
+		},
+		price: {
+			type: Number,
+			min: 1,
+			required: true,
+		},
+		negotiablePrice: {
+			type: Boolean,
+			required: true,
+		},
+		condition: {
+			type: String,
+			enum: conditionsOfClothes,
+			required: true,
+		},
+		size: {
+			type: String,
+			enum: sizeOfClothes,
+			required: true,
+		},
 	},
-	name: {
-		type: String,
-		required: true,
-	},
-	color: {
-		type: String,
-		required: true,
-	},
-	price: {
-		type: Number,
-		min: 1,
-		required: true,
-	},
-	negotiablePrice: {
-		type: Boolean,
-		required: true,
-	},
-	condition: {
-		type: String,
-		enum: conditionsOfClothes,
-		required: true,
-	},
-	size: {
-		type: String,
-		enum: sizeOfClothes,
-		required: true,
-	},
-});
+	{
+		collection: "clothings",
+	}
+);
 
 export default mongoose.models.Clothing ||
 	mongoose.model("Clothing", ClothingSchema);
