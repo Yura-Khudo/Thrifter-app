@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	align-items: center;
+}
+
+.input {
+	display: none;
+}
+
+.relativeSpan {
+	display: block;
+	position: relative;
+	width: 48px;
+	height: 24px;
+	margin: 1rem;
+	padding: 12px 24px;
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.childSpan {
+	margin: auto;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.relativeSpanChecked {
+	background: black;
+}
+.childSpanChecked {
+	background: rgb(242, 244, 245);
+	right: 6px;
+}
+
+.relativeSpanNotChecked {
+	background: rgb(242, 244, 245);
+}
+.childSpanNotChecked {
+	background: black;
+	left: 6px;
+}

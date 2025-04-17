@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.label {
+	margin-bottom: 0.25rem;
+}
+
+.textArea {
+	resize: none;
+	min-height: 10rem;
+	height: auto;
+	background: rgb(242, 244, 245);
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	padding: 0.75rem 0.5rem;
+	font-size: 16px;
+}

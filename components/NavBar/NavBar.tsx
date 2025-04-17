@@ -9,10 +9,18 @@ const NavBar: React.FC = () => {
 				backgroundColor: "#faedcd",
 			}}
 		>
-			<div>
-				<p style={{ margin: "1rem", fontSize: "2rem", fontWeight: "bolder" }}>
+			<div style={{ margin: "1rem" }}>
+				<Link
+					href="/"
+					style={{
+						fontSize: "2rem",
+						fontWeight: "bolder",
+						textDecoration: "none",
+						color: "black",
+					}}
+				>
 					LOGO
-				</p>
+				</Link>
 			</div>
 			<div style={{ display: "flex", fontSize: "1.25rem" }}>
 				<div

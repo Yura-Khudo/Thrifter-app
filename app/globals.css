@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -6,6 +8,10 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "roboto", "sans-serif";
+}
+body {
+	background-color: rgb(242, 244, 245);
 }
 /* 
 @media (prefers-color-scheme: dark) {

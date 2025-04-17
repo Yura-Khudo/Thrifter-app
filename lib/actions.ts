@@ -1,7 +1,10 @@
 "use server";
 
-import Clothing, { clothes } from "@/models/Clothing";
+import Clothing from "@/models/Clothing";
 import dbConnect from "./dbConnect";
+import { clothes } from "@/utils/arrUtils";
+import { sellClothingSchema } from "@/utils/validations";
+import { redirect } from "next/navigation";
 
 ///////////////////
 
@@ -17,10 +20,41 @@ export async function updateDB(state: any, formData: FormData) {
 ///////////////////
 
 export async function sellClothing(state: any, formData: FormData) {
+	const negotiablePrice =
+		(formData.get("negotiablePrice") as string | null) === "on" ? true : false;
+	const type = formData.get("type") as string;
+	const name = formData.get("name") as string;
+	const price = formData.get("price") as string;
+	const description = formData.get("description") as string;
+	const condition = formData.get("condition") as string;
+	const size = formData.get("size") as string;
+	const validation = sellClothingSchema.safeParse({
+		type,
+		name,
+		price,
+		description,
+		condition,
+		size,
+	});
+
+	if (!validation.success) {
+		return {
+			error: validation.error?.flatten().fieldErrors,
+			data: {
+				type,
+				name,
+				price,
+				negotiablePrice,
+				description,
+				condition,
+				size,
+			},
+		};
+	}
+
 	await dbConnect();
 
-	// const product = await Product.create({ title });
-	const clothing = new Clothing({});
-	// await clothing.save();
-	console.log(clothing);
+	const clothing = new Clothing({ ...validation.data, negotiablePrice });
+	await clothing.save();
+	redirect("/");
 }

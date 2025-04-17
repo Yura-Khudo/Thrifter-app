@@ -1,0 +1,33 @@
+.inputContainer {
+	background: rgb(242, 244, 245);
+	border: none;
+	outline: none;
+	border-radius: 8px;
+	line-height: 1.5rem;
+	padding: 0.5rem 0.75rem;
+}
+.input {
+	background: inherit;
+	border: none;
+	outline: none;
+	font-size: inherit;
+	width: 100%;
+}
+
+.span {
+	padding-right: 0.5rem;
+	color: grey;
+}
+.inputPrice {
+	width: 250px;
+}
+
+.label {
+	margin-bottom: 0.25rem;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	max-width: "70%";
+}
