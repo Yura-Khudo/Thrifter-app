@@ -41,13 +41,13 @@
 	padding: 1rem 1.5rem;
 	font-size: 1.25rem;
 	border-radius: 8px;
-	background: #faedcd80;
+	background: #faedcd;
 	cursor: pointer;
 	border: 1px solid #ccc;
 }
 
 .button:hover {
-	background: #faedcd;
+	background: #faedcd80;
 }
 
 @media screen and (max-width: 1330px) {
