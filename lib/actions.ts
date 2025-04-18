@@ -28,6 +28,7 @@ export async function sellClothing(state: any, formData: FormData) {
 	const description = formData.get("description") as string;
 	const condition = formData.get("condition") as string;
 	const size = formData.get("size") as string;
+	const gender = formData.get("gender") as string;
 	const validation = sellClothingSchema.safeParse({
 		type,
 		name,
@@ -35,6 +36,7 @@ export async function sellClothing(state: any, formData: FormData) {
 		description,
 		condition,
 		size,
+		gender,
 	});
 
 	if (!validation.success) {
@@ -48,6 +50,7 @@ export async function sellClothing(state: any, formData: FormData) {
 				description,
 				condition,
 				size,
+				gender,
 			},
 		};
 	}

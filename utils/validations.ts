@@ -1,5 +1,10 @@
 import { z } from "zod";
-import { conditionsOfClothes, typesOfClothes, allSizes } from "./arrUtils";
+import {
+	conditionsOfClothes,
+	typesOfClothes,
+	allSizes,
+	clothingGenders,
+} from "./arrUtils";
 
 export const sellClothingSchema = z.object({
 	type: z.string().refine((val) => typesOfClothes.includes(val), {
@@ -22,4 +27,9 @@ export const sellClothingSchema = z.object({
 	size: z.string().refine((val) => allSizes.includes(val), {
 		message: "Choose one of the proposed sizes",
 	}),
+	gender: z
+		.string()
+		.refine((val) => clothingGenders.includes(val), {
+			message: "Choose one of the proposed genders",
+		}),
 });

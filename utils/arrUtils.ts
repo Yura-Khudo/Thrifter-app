@@ -66,6 +66,7 @@ export const clothesWithSizes = [
 // 	type,
 // 	sizes: sizeMap[type] || sizeMap.default,
 // }));
+export const clothingGenders = ["men", "women", "unisex"];
 
 export const allSizes = sizeOfClothes.concat(sizeOfPants, sizeOfShoes);
 
@@ -78,6 +79,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "M",
+		gender: "unisex",
 	},
 	{
 		type: "jeans",
@@ -87,6 +89,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Pre-owned",
 		size: "34",
+		gender: "men",
 	},
 	{
 		type: "pants",
@@ -96,6 +99,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "36",
+		gender: "men",
 	},
 	{
 		type: "skirt",
@@ -105,6 +109,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Restored",
 		size: "S",
+		gender: "women",
 	},
 	{
 		type: "hoodie",
@@ -114,6 +119,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "L",
+		gender: "unisex",
 	},
 	{
 		type: "jacket",
@@ -123,6 +129,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Pre-owned",
 		size: "M",
+		gender: "unisex",
 	},
 	{
 		type: "shorts",
@@ -132,6 +139,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Restored",
 		size: "40",
+		gender: "men",
 	},
 	{
 		type: "dress",
@@ -141,6 +149,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "M",
+		gender: "women",
 	},
 	{
 		type: "shoes",
@@ -150,6 +159,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Pre-owned",
 		size: "42",
+		gender: "unisex",
 	},
 	{
 		type: "t-shirt",
@@ -159,6 +169,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Restored",
 		size: "L",
+		gender: "unisex",
 	},
 	{
 		type: "jeans",
@@ -168,6 +179,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "32",
+		gender: "women",
 	},
 	{
 		type: "pants",
@@ -177,6 +189,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Pre-owned",
 		size: "38",
+		gender: "men",
 	},
 	{
 		type: "skirt",
@@ -186,6 +199,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "XS",
+		gender: "women",
 	},
 	{
 		type: "hoodie",
@@ -195,6 +209,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Restored",
 		size: "XL",
+		gender: "unisex",
 	},
 	{
 		type: "jacket",
@@ -204,6 +219,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Pre-owned",
 		size: "L",
+		gender: "men",
 	},
 	{
 		type: "shorts",
@@ -213,6 +229,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Brand new",
 		size: "36",
+		gender: "women",
 	},
 	{
 		type: "dress",
@@ -222,6 +239,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "S",
+		gender: "women",
 	},
 	{
 		type: "shoes",
@@ -231,6 +249,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Pre-owned",
 		size: "43",
+		gender: "men",
 	},
 	{
 		type: "t-shirt",
@@ -240,6 +259,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Brand new",
 		size: "S",
+		gender: "unisex",
 	},
 	{
 		type: "jeans",
@@ -249,6 +269,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Restored",
 		size: "40",
+		gender: "women",
 	},
 	{
 		type: "pants",
@@ -258,6 +279,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Pre-owned",
 		size: "34",
+		gender: "unisex",
 	},
 	{
 		type: "skirt",
@@ -267,6 +289,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "M",
+		gender: "women",
 	},
 	{
 		type: "hoodie",
@@ -276,6 +299,7 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Restored",
 		size: "XXL",
+		gender: "unisex",
 	},
 	{
 		type: "jacket",
@@ -285,6 +309,7 @@ export const clothes = [
 		negotiablePrice: true,
 		condition: "Brand new",
 		size: "XL",
+		gender: "unisex",
 	},
 	{
 		type: "shoes",
@@ -294,5 +319,6 @@ export const clothes = [
 		negotiablePrice: false,
 		condition: "Restored",
 		size: "41",
+		gender: "unisex",
 	},
 ];

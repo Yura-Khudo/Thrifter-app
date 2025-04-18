@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {
 	allSizes,
+	clothingGenders,
 	conditionsOfClothes,
 	typesOfClothes,
 } from "@/utils/arrUtils";
@@ -51,7 +52,7 @@ const ClothingSchema = new mongoose.Schema(
 		},
 		gender: {
 			type: String,
-			enum: ["man", "woman", "unisex"],
+			enum: clothingGenders,
 			required: true,
 		},
 	},

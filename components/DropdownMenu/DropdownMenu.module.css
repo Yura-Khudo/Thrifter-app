@@ -15,6 +15,7 @@
 
 .dropdownMenuContainer {
 	position: relative;
+	cursor: pointer;
 }
 
 .menu {

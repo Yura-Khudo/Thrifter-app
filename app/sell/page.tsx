@@ -10,6 +10,7 @@ import {
 	conditionsOfClothes,
 	typesOfClothes,
 	clothesWithSizes,
+	clothingGenders,
 } from "@/utils/arrUtils";
 import { useActionState, useState, useRef } from "react";
 import classes from "./page.module.css";
@@ -44,6 +45,8 @@ const Page: React.FC = () => {
 		setInputCount(inputRef.current?.value.length ?? 0);
 	}
 
+	console.log(state?.error);
+
 	return (
 		<form className={classes.form} action={action}>
 			<h1 className={classes.header}>Sell your clothing</h1>
@@ -70,6 +73,12 @@ const Page: React.FC = () => {
 				{state?.error.type && <ErrorMessage message={state.error.type} />}
 			</div>
 			<div className={classes.container}>
+				<DropdownMenu
+					name="gender"
+					arr={clothingGenders}
+					defaultValue={state?.data.gender || "Choose your gender"}
+				/>
+				{state?.error.gender && <ErrorMessage message={state.error.gender} />}
 				<DropdownMenu
 					name="size"
 					arr={size.sizes}
