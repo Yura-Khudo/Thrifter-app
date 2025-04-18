@@ -49,6 +49,11 @@ const ClothingSchema = new mongoose.Schema(
 			enum: allSizes,
 			required: true,
 		},
+		gender: {
+			type: String,
+			enum: ["man", "woman", "unisex"],
+			required: true,
+		},
 	},
 	{
 		collection: "clothings",
