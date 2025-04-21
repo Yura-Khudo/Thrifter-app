@@ -45,8 +45,6 @@ const Page: React.FC = () => {
 		setInputCount(inputRef.current?.value.length ?? 0);
 	}
 
-	console.log(state?.error);
-
 	return (
 		<form className={classes.form} action={action}>
 			<h1 className={classes.header}>Sell your clothing</h1>

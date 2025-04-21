@@ -30,17 +30,17 @@
 }
 
 .relativeSpanChecked {
-	background: black;
+	background: var(--black-color);
 }
 .childSpanChecked {
-	background: rgb(242, 244, 245);
+	background: var(--darkgrey-color);
 	right: 6px;
 }
 
 .relativeSpanNotChecked {
-	background: rgb(242, 244, 245);
+	background: var(--darkgrey-color);
 }
 .childSpanNotChecked {
-	background: black;
+	background: var(--black-color);
 	left: 6px;
 }

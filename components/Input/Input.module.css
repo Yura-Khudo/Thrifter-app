@@ -1,5 +1,5 @@
 .inputContainer {
-	background: rgb(242, 244, 245);
+	background: var(--darkgrey-color);
 	border: none;
 	outline: none;
 	border-radius: 8px;

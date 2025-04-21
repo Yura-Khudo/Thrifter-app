@@ -20,7 +20,7 @@
 
 .menu {
 	position: absolute;
-	border: 1px solid #ccc;
+	border: 1px solid var(--lightgrey-color);
 	background: #f2f4f5;
 	border-radius: 8px;
 	z-index: 1;
@@ -33,8 +33,8 @@
 
 .dropdownMenuValue {
 	padding: 10px 15px;
-	border: 1px solid #ccc;
-	background: rgb(242, 244, 245);
+	border: 1px solid var(--lightgrey-color);
+	background: var(--darkgrey-color);
 	border-radius: 8px;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .option:hover {
-	background-color: #faedcd;
+	background-color: var(--secondary-color);
 }
 
 .option:first-child {
