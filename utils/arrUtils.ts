@@ -27,14 +27,6 @@ export const sizeOfShoes = [
 	"46",
 ];
 
-export const sizeMap: Record<string, string[]> = {
-	shoes: sizeOfShoes,
-	jeans: sizeOfPants,
-	pants: sizeOfPants,
-	shorts: sizeOfPants,
-	default: sizeOfClothes,
-};
-
 export const clothesWithSizes = [
 	{ type: "t-shirt", sizes: ["XS", "S", "M", "L", "XL", "XXL"] },
 	{ type: "jeans", sizes: ["32", "34", "36", "38", "40", "42", "44", "46"] },
@@ -62,10 +54,7 @@ export const clothesWithSizes = [
 		],
 	},
 ];
-// const clothesWithSizes = typesOfClothes.map((type) => ({
-// 	type,
-// 	sizes: sizeMap[type] || sizeMap.default,
-// }));
+
 export const clothingGenders = ["men", "women", "unisex"];
 
 export const allSizes = sizeOfClothes.concat(sizeOfPants, sizeOfShoes);

@@ -1,0 +1,68 @@
+.nav {
+	background-color: var(--primary-color);
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1330px;
+	margin: auto;
+}
+
+.logoContainer {
+	margin: 1rem;
+}
+
+.logo {
+	font-size: 2rem;
+	font-weight: bolder;
+	text-decoration: none;
+	color: var(--black-color);
+}
+
+.utilityContainer {
+	display: flex;
+	font-size: 1.25rem;
+}
+.profileContainer {
+	display: flex;
+	margin: 0 1rem;
+	align-items: center;
+	cursor: pointer;
+}
+
+.profileContainer:hover .arrow {
+	transform: rotate(315deg);
+}
+
+.userIcon {
+	width: 24px;
+}
+
+.arrow {
+	border-left: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+	width: 8px;
+	height: 8px;
+	transform: rotate(135deg);
+	margin-left: 8px;
+	transition: all 0.2s ease-in-out;
+}
+
+.sellContainer {
+	margin-right: 1rem;
+	display: flex;
+	align-items: center;
+}
+.sellLink {
+	text-decoration: none;
+	color: var(--black-color);
+	padding: 0.75rem;
+	border-radius: 8px;
+	transition: all 0.2s ease-in-out;
+}
+
+.sellContainer:hover .sellLink {
+	background-color: var(--secondary-color);
+	color: white;
+}
