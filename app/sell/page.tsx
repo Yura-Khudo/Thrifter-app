@@ -11,26 +11,34 @@ import {
 	typesOfClothes,
 	clothesWithSizes,
 	clothingGenders,
+	clothingCategories,
 } from "@/utils/arrUtils";
 import { useActionState, useState, useRef } from "react";
 import classes from "./page.module.css";
 
 const Page: React.FC = () => {
-	const [state, action, isPending] = useActionState(sellClothing, null);
-	const [size, setSize] = useState<{ sizes: string[] }>({
-		sizes: [],
-	});
+	// DropdownMenu dynamic changes //
 
-	function handleTypeChange(value: string) {
+	const [state, action, isPending] = useActionState(sellClothing, null);
+	const [sizes, setSizes] = useState<string[]>([]);
+	const [types, setTypes] = useState<string[] | null>(null);
+
+	function handleSizeChange(value: string) {
 		const currSize = clothesWithSizes.find(
 			(clothing) => clothing.type === value
 		);
-		setSize(currSize!);
+		setSizes(currSize!.sizes);
 	}
+
+	function handleTypesChange(value: string) {
+		setTypes(clothingCategories[value as keyof typeof clothingCategories]);
+	}
+
+	////
+	// Letters Counter //
 
 	const inputRef = useRef<HTMLInputElement>(null);
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
 	const [inputCount, setInputCount] = useState<number>(
 		inputRef.current?.value.length || 0
 	);
@@ -40,10 +48,11 @@ const Page: React.FC = () => {
 	function handleTextAreaChange() {
 		setTextAreaCount(textAreaRef.current?.value.length ?? 0);
 	}
-
 	function handleInputChange() {
 		setInputCount(inputRef.current?.value.length ?? 0);
 	}
+
+	////
 
 	return (
 		<form className={classes.form} action={action}>
@@ -63,15 +72,18 @@ const Page: React.FC = () => {
 				</div>
 
 				<DropdownMenu
-					handleTypeChange={handleTypeChange}
+					handleChange={handleSizeChange}
 					name="type"
-					arr={typesOfClothes}
-					defaultValue={state?.data.type || "Choose your type"}
+					arr={types || typesOfClothes}
+					defaultValue={
+						(types && types[0]) || state?.data.type || "Choose your type"
+					}
 				/>
 				{state?.error.type && <ErrorMessage message={state.error.type} />}
 			</div>
 			<div className={classes.container}>
 				<DropdownMenu
+					handleChange={handleTypesChange}
 					name="gender"
 					arr={clothingGenders}
 					defaultValue={state?.data.gender || "Choose your gender"}
@@ -79,9 +91,9 @@ const Page: React.FC = () => {
 				{state?.error.gender && <ErrorMessage message={state.error.gender} />}
 				<DropdownMenu
 					name="size"
-					arr={size.sizes}
+					arr={sizes}
 					defaultValue={
-						size.sizes[0] || state?.data.size || "Choose type of clothing first"
+						sizes[0] || state?.data.size || "Choose type of clothing first"
 					}
 				/>
 				{state?.error.size && <ErrorMessage message={state.error.size} />}

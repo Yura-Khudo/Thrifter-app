@@ -5,9 +5,9 @@ import classes from "./DropdownMenu.module.css";
 const DropdownMenu: React.FC<{
 	arr: string[];
 	name: string;
-	handleTypeChange?: (value: string) => void;
+	handleChange?: (value: string) => void;
 	defaultValue: string;
-}> = ({ arr, name, handleTypeChange, defaultValue }) => {
+}> = ({ arr, name, handleChange, defaultValue }) => {
 	const [value, setValue] = useState(defaultValue || "Choose your value");
 	const [state, setState] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
@@ -15,8 +15,12 @@ const DropdownMenu: React.FC<{
 	function selectNewValue(value: string) {
 		setState(false);
 		setValue(value);
-		handleTypeChange?.(value);
+		// DropdownMenu dynamic change//
+		handleChange?.(value);
+		////
 	}
+
+	// Hide dropdownMenu after clicking outside of menu //
 
 	useEffect(() => {
 		function handleClickOutside(event: MouseEvent) {
@@ -33,7 +37,11 @@ const DropdownMenu: React.FC<{
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
 	}, []);
+
+	////
+	// DropdownMenu dynamic change
 	useEffect(() => setValue(defaultValue), [defaultValue]);
+	////
 	return (
 		<div ref={dropdownRef} className={classes.container}>
 			<label className={classes.label} htmlFor={name}>
@@ -47,7 +55,7 @@ const DropdownMenu: React.FC<{
 			/>
 			<div
 				className={`${classes.dropdownMenuContainer} ${
-					arr.length === 0 && classes.disabled
+					name !== "type" && arr.length === 0 && classes.disabled
 				}`}
 			>
 				<p

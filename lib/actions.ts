@@ -61,3 +61,12 @@ export async function sellClothing(state: any, formData: FormData) {
 	await clothing.save();
 	redirect("/");
 }
+
+async function search(params: {
+	type: string;
+	name: string;
+	price: string;
+	condition: string;
+	size: string;
+	gender: string;
+}) {}
