@@ -17,11 +17,12 @@
 	left: 1rem;
 	gap: 1rem;
 	opacity: 0;
-	display: none;
+	display: hidden;
 	z-index: 10;
+	transition: opacity 0.2s ease-in;
 }
 
 .open {
 	opacity: 1;
-	display: flex;
+	display: block;
 }

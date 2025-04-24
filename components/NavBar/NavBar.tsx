@@ -7,7 +7,6 @@ import { useState } from "react";
 
 const Navbar: React.FC = () => {
 	const [content, setContent] = useState({ arr: sizeOfPants, isOpen: false });
-	// const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<div className={classes.navContainer}>
@@ -50,16 +49,6 @@ const Navbar: React.FC = () => {
 					link="unisex"
 					title="UNISEX"
 				/>
-				{/* <div
-						onMouseLeave={close}
-						onMouseOver={() => openMenu(typesOfClothes)}
-						className={`${classes.dropdownLink} `}
-					>
-						<Link className={classes.link} href="/man">
-							UNISEX
-							<p className={classes.arrow}></p>
-						</Link>
-					</div> */}
 			</div>
 		</div>
 	);

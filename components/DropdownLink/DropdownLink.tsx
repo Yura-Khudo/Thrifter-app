@@ -24,7 +24,7 @@ const DropdownLink: React.FC<{
 				className={`${classes.link} ${
 					content.isOpen && content.arr === arr && classes.activeLink
 				}`}
-				href={`/${link}`}
+				href={`/search?gender=${link}`}
 			>
 				{title}
 				<p
