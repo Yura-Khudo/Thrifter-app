@@ -11,13 +11,10 @@
 
 .menu {
 	position: absolute;
-	color: white;
-	background-color: var(--secondary-color);
 	top: 61px;
-	left: 1rem;
-	gap: 1rem;
 	opacity: 0;
-	display: hidden;
+	display: none;
+
 	z-index: 10;
 	transition: opacity 0.2s ease-in;
 }

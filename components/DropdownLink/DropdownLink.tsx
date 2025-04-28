@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const DropdownLink: React.FC<{
 	setContent: React.Dispatch<
-		React.SetStateAction<{ arr: string[]; isOpen: boolean }>
+		React.SetStateAction<{ arr: string[]; isOpen: boolean; gender: string }>
 	>;
-	content: { arr: string[]; isOpen: boolean };
+	content: { arr: string[]; isOpen: boolean; gender: string };
 	arr: string[];
 	link: string;
 	title: string;
@@ -14,10 +14,10 @@ const DropdownLink: React.FC<{
 		<div
 			onMouseLeave={() =>
 				setContent((prevState) => {
-					return { ...prevState, isOpen: false };
+					return { ...prevState, isOpen: false, gender: link };
 				})
 			}
-			onMouseOver={() => setContent({ arr, isOpen: true })}
+			onMouseOver={() => setContent({ arr, isOpen: true, gender: link })}
 			className={`${classes.dropdownLink} `}
 		>
 			<Link

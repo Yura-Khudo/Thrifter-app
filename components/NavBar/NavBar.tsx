@@ -1,12 +1,17 @@
 "use client";
 
 import classes from "./Navbar.module.css";
-import { sizeOfPants, sizeOfShoes, typesOfClothes } from "@/utils/arrUtils";
+import { clothingCategories } from "@/utils/arrUtils";
 import DropdownLink from "../DropdownLink/DropdownLink";
 import { useState } from "react";
+import DropdownLinkMenu from "../DropdownLinkMenu/DropdownLinkMenu";
 
 const Navbar: React.FC = () => {
-	const [content, setContent] = useState({ arr: sizeOfPants, isOpen: false });
+	const [content, setContent] = useState({
+		arr: clothingCategories.men,
+		isOpen: false,
+		gender: "men",
+	});
 
 	return (
 		<div className={classes.navContainer}>
@@ -24,28 +29,26 @@ const Navbar: React.FC = () => {
 					}
 					className={`${classes.menu} ${content.isOpen && classes.open}`}
 				>
-					{content.arr.map((el) => (
-						<p key={el}>{el}</p>
-					))}
+					<DropdownLinkMenu content={content} />
 				</div>
 				<DropdownLink
 					setContent={setContent}
 					content={content}
-					arr={sizeOfShoes}
+					arr={clothingCategories.men}
 					link="men"
 					title="FOR MEN"
 				/>
 				<DropdownLink
 					setContent={setContent}
 					content={content}
-					arr={sizeOfPants}
+					arr={clothingCategories.women}
 					link="women"
 					title="FOR WOMEN"
 				/>
 				<DropdownLink
 					setContent={setContent}
 					content={content}
-					arr={typesOfClothes}
+					arr={clothingCategories.unisex}
 					link="unisex"
 					title="UNISEX"
 				/>
