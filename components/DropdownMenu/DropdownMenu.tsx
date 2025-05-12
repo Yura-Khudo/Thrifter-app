@@ -9,11 +9,11 @@ const DropdownMenu: React.FC<{
 	defaultValue: string;
 }> = ({ arr, name, handleChange, defaultValue }) => {
 	const [value, setValue] = useState(defaultValue || "Choose your value");
-	const [state, setState] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	function selectNewValue(value: string) {
-		setState(false);
+		setIsOpen(false);
 		setValue(value);
 		// DropdownMenu dynamic change//
 		handleChange?.(value);
@@ -28,7 +28,7 @@ const DropdownMenu: React.FC<{
 				dropdownRef.current &&
 				!dropdownRef.current.contains(event.target as Node)
 			) {
-				setState(false);
+				setIsOpen(false);
 			}
 		}
 
@@ -60,12 +60,12 @@ const DropdownMenu: React.FC<{
 			>
 				<p
 					className={classes.dropdownMenuValue}
-					onClick={() => setState((prevState) => !prevState)}
+					onClick={() => setIsOpen((prevState) => !prevState)}
 				>
 					{firstLetterUppercase(value)}
 				</p>
 				{arr.length > 0 && (
-					<div className={`${classes.menu} ${state && classes.menuOpen}  `}>
+					<div className={`${classes.menu} ${isOpen && classes.menuOpen}  `}>
 						{arr.map((el, i) => (
 							<p
 								className={classes.option}

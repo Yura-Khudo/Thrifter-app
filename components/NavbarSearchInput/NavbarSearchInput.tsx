@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useActionState, useState } from "react";
+import { FormEvent, useActionState, useState, useEffect, useRef } from "react";
 
 import classes from "./NavbarSearchInput.module.css";
 import { filter } from "@/lib/actions";
@@ -16,8 +16,27 @@ const NavbarSearchInput: React.FC = () => {
 
 	const [state, action] = useActionState(filter, null);
 
+	///// Hide input if clicked outside of the form
+
+	const formRef = useRef<HTMLFormElement>(null);
+
+	useEffect(() => {
+		function handleClickOutside(event: MouseEvent) {
+			if (formRef.current && !formRef.current.contains(event.target as Node)) {
+				setIsOpen(false);
+			}
+		}
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
+	/////
+
 	return (
-		<form action={action} className={classes.form}>
+		<form ref={formRef} action={action} className={classes.form}>
 			<div className={classes.container}>
 				<input
 					className={`${classes.input} ${isOpen && classes.inputShow}`}
