@@ -5,8 +5,13 @@
 .nav {
 	max-width: 1330px;
 	display: flex;
+	justify-content: space-between;
 	margin: auto;
 	position: relative;
+}
+
+.categories {
+	display: flex;
 }
 
 .menu {
@@ -14,7 +19,6 @@
 	top: 61px;
 	opacity: 0;
 	display: none;
-
 	z-index: 10;
 	transition: opacity 0.2s ease-in;
 }

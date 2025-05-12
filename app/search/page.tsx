@@ -11,20 +11,20 @@ const Page: React.FC<{
 	return (
 		<div
 			style={{
-				// maxWidth: "1600px",
+				maxWidth: "1330px",
 				margin: "0.5rem auto 0",
 				overflow: "hidden",
 				display: "grid",
 				flex: 1,
 				gap: "8px",
-				gridTemplateColumns: "6fr 2fr",
+				gridTemplateColumns: "6fr 1.5fr",
 			}}
 		>
 			<div
 				style={{
 					background: "var(--primary-color)",
 					padding: "1rem",
-					borderRadius: "16px",
+					borderRadius: "8px",
 				}}
 			>
 				{clothes && clothes.map((el) => <p key={el._id}>{el.name}</p>)}
