@@ -81,7 +81,7 @@ export async function findClothes(params: {
 		query.type = { $in: type };
 	}
 	if (name) {
-		query.name = { $in: name };
+		query.name = { $regex: name, $options: "i" };
 	}
 	if (condition) {
 		query.condition = { $in: condition };
