@@ -11,7 +11,7 @@
 	resize: none;
 	min-height: 10rem;
 	height: auto;
-	background: var(--darkgrey-color);
+	background: var(--lightgrey-color);
 	outline: none;
 	border: none;
 	border-radius: 5px;

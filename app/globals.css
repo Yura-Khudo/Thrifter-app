@@ -4,17 +4,22 @@
 	--primary-color: #faedcd;
 	--secondary-color: #b8d0eb;
 	--black-color: #0a0908;
-	--darkgrey-color: #f2f4f5;
-	--lightgrey-color: #ccc;
+	--darkgrey-color: #ccc;
+	--lightgrey-color: #f2f4f5;
 }
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "roboto", "sans-serif";
+	color: var(--black-color);
 }
 body {
-	background-color: var(--darkgrey-color);
+	background-color: var(--lightgrey-color);
+}
+html,
+body {
+	height: 100%;
 }
 /* 
 @media (prefers-color-scheme: dark) {

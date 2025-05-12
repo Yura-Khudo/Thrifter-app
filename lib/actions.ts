@@ -62,11 +62,84 @@ export async function sellClothing(state: any, formData: FormData) {
 	redirect("/");
 }
 
-async function search(params: {
-	type: string;
-	name: string;
-	price: string;
-	condition: string;
-	size: string;
-	gender: string;
-}) {}
+export async function findClothes(params: {
+	[key: string]: string | string[] | undefined;
+}) {
+	const {
+		type,
+		name,
+		minPrice,
+		maxPrice,
+		negotiablePrice,
+		condition,
+		size,
+		gender,
+	} = params;
+
+	const query: any = {};
+	if (type) {
+		query.type = { $in: type };
+	}
+	if (name) {
+		query.name = { $in: name };
+	}
+	if (condition) {
+		query.condition = { $in: condition };
+	}
+	if (size) {
+		query.size = { $in: size };
+	}
+	if (gender) {
+		query.gender = { $in: gender };
+	}
+	if (negotiablePrice) {
+		query.negotiablePrice = { $in: negotiablePrice };
+	}
+	if (minPrice && maxPrice) {
+		query.price = {
+			$gt: +minPrice,
+			$lte: +maxPrice,
+		};
+	}
+
+	await dbConnect();
+	const clothes = await Clothing.find(query);
+	return clothes;
+}
+
+export async function filter(state: any, formData: FormData) {
+	const name = formData.get("name") as string;
+	const minPrice = formData.get("minPrice") as string;
+	const maxPrice = formData.get("maxPrice") as string;
+	const negotiablePrice =
+		(formData.get("negotiablePrice") as string | null) === "on" ? true : false;
+	const types = formData.getAll("type") as string[];
+	const conditions = formData.getAll("condition") as string[];
+	const sizes = formData.getAll("size") as string[];
+	const genders = formData.getAll("gender") as string[];
+
+	const searchParams = new URLSearchParams();
+
+	if (name) {
+		searchParams.append("name", name);
+	}
+	if (minPrice) {
+		searchParams.append("minPrice", minPrice);
+	}
+	if (maxPrice) {
+		searchParams.append("maxPrice", maxPrice);
+	}
+	if (negotiablePrice) {
+		searchParams.append("negotiablePrice", negotiablePrice.toString());
+	}
+
+	types.forEach((type) => searchParams.append("type", type));
+	conditions.forEach((condition) =>
+		searchParams.append("condition", condition)
+	);
+	sizes.forEach((size) => searchParams.append("size", size));
+	genders.forEach((gender) => searchParams.append("gender", gender));
+	const url = `/search?${searchParams.toString()}`;
+
+	redirect(url);
+}

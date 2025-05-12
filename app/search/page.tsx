@@ -1,9 +1,37 @@
+import { findClothes } from "@/lib/actions";
 import classes from "./page.module.css";
+import Filter from "@/components/Filter/Filter";
 
-const Page: React.FC<{ searchParams: any }> = async ({ searchParams }) => {
+const Page: React.FC<{
+	searchParams: { [key: string]: string | string[] | undefined };
+}> = async ({ searchParams }) => {
 	const params = await searchParams;
-	console.log(params);
-	return <div>Search page</div>;
+	const clothes = await findClothes(params);
+	// console.log(clothes);
+	return (
+		<div
+			style={{
+				// maxWidth: "1600px",
+				margin: "0.5rem auto 0",
+				overflow: "hidden",
+				display: "grid",
+				flex: 1,
+				gap: "8px",
+				gridTemplateColumns: "6fr 2fr",
+			}}
+		>
+			<div
+				style={{
+					background: "var(--primary-color)",
+					padding: "1rem",
+					borderRadius: "16px",
+				}}
+			>
+				{clothes && clothes.map((el) => <p key={el._id}>{el.name}</p>)}
+			</div>
+			<Filter />
+		</div>
+	);
 };
 
 export default Page;

@@ -1,0 +1,96 @@
+.form {
+	position: relative;
+	padding-left: 1rem;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 1rem 1rem 1rem;
+	min-height: 100%;
+	background-color: var(--secondary-color);
+	border-radius: 8px;
+}
+
+.categoryWrapper {
+	margin-top: 0.5rem;
+}
+
+.priceInputContainer {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	margin-top: 0.25rem;
+}
+
+.span {
+	font-size: 24px;
+}
+
+.inputContainer {
+	background: var(--lightgrey-color);
+	border: none;
+	outline: none;
+	border-radius: 8px;
+	line-height: 1.5rem;
+	padding: 0.5rem 0.75rem;
+}
+
+.input {
+	background: inherit;
+	border: none;
+	outline: none;
+	font-size: inherit;
+	width: 100%;
+}
+
+.filterSelectorOpener {
+	width: 100%;
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	background: var(--lightgrey-color);
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.filterSelectorOpener:hover {
+	background-color: var(--primary-color);
+}
+.drop {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	display: none;
+	transition: all 1s ease-in-out;
+	top: 0;
+	left: 0;
+}
+
+.show {
+	display: block;
+	animation: Show 0.3s ease-in-out forwards;
+}
+
+@keyframes Show {
+	0% {
+		transform: translate(100%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translate(0);
+		opacity: 1;
+	}
+}
+
+.applyButton {
+	margin-top: 0.5rem;
+	padding: 0.75rem;
+	border-radius: 8px;
+	border: none;
+	font-size: 16px;
+	background-color: var(--lightgrey-color);
+	cursor: pointer;
+}
+
+.applyButton:hover {
+	background-color: var(--primary-color);
+}

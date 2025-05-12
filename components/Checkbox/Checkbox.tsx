@@ -6,19 +6,19 @@ const Checkbox: React.FC<{
 	name: string;
 	strictName?: string;
 	isChecked?: boolean;
-	defaultValue?: string;
-}> = ({ name, strictName, isChecked = false, defaultValue }) => {
+}> = ({ name, strictName, isChecked = false }) => {
 	const [checked, setChecked] = useState(isChecked);
 	return (
 		<div className={classes.container}>
 			<label htmlFor={name}>{firstLetterUppercase(strictName || name)}</label>
 			<input
+				key={name}
 				className={classes.input}
 				type="checkbox"
-				defaultValue={defaultValue}
-				defaultChecked={checked}
+				checked={checked}
 				id={name}
 				name={name}
+				onChange={(e) => setChecked(e.target.checked)}
 			/>
 			<span
 				onClick={() => setChecked((prevState) => !prevState)}
