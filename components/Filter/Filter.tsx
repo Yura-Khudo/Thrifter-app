@@ -195,7 +195,12 @@ const Filter: React.FC = () => {
 						name="gender"
 					/>
 				</div>
-				<button disabled={priceInputError} className={classes.applyButton}>
+				<button
+					disabled={priceInputError}
+					className={`${classes.applyButton} ${
+						priceInputError && classes.disabled
+					}`}
+				>
 					Search
 				</button>
 			</form>
