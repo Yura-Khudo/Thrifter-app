@@ -3,6 +3,7 @@
 	flex-direction: row-reverse;
 	align-items: center;
 	overflow: hidden;
+	padding-right: 1rem;
 }
 
 .container {
