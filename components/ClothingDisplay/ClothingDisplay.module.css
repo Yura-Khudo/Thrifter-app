@@ -1,0 +1,16 @@
+.main {
+	border-radius: 8px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 1180px) {
+	.main {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 780px) {
+	.main {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

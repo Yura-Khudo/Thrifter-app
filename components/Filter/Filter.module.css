@@ -1,12 +1,13 @@
 .form {
 	position: relative;
-	padding-left: 1rem;
 	display: flex;
 	flex-direction: column;
 	padding: 1rem 1rem 1rem 1rem;
 	min-height: 100%;
 	background-color: var(--secondary-color);
 	border-radius: 8px;
+	margin-right: 1rem;
+	margin-top: 0.5rem;
 }
 
 .categoryWrapper {

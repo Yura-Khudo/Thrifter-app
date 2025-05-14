@@ -1,0 +1,18 @@
+.link {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-decoration: none;
+	padding: 0.5rem;
+	background: var(--lightgrey-color);
+	border-radius: 8px;
+}
+
+.imageWrapper {
+	position: relative;
+	height: 300px;
+}
+
+.name {
+	margin-top: 0.5rem;
+}

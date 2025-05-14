@@ -1,0 +1,9 @@
+.main {
+	max-width: 1330px;
+	margin: 0.5rem auto 1rem;
+	overflow: hidden;
+	display: grid;
+	flex: 1;
+	gap: 8px;
+	grid-template-columns: 6fr 1.5fr;
+}
