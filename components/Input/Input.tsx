@@ -1,6 +1,6 @@
 import { firstLetterUppercase } from "@/utils/utils";
 import classes from "./Input.module.css";
-import { RefObject } from "react";
+import { RefObject, useRef } from "react";
 
 const Input: React.FC<{
 	name: string;

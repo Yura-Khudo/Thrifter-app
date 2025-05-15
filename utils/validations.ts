@@ -14,9 +14,14 @@ export const sellClothingSchema = z.object({
 		.string()
 		.min(3, { message: "The name of clothing must be at least 3 letters" })
 		.max(70, { message: "The name of clothing must be less than 70 letters" }),
-	price: z.string().regex(/^\d+$/, {
-		message: "Please enter valid price",
-	}),
+	// price: z
+	// 	.number({ message: "Please enter valid price" })
+	// 	.nonnegative({ message: "Please enter valid price" }),
+	price: z
+		.string()
+		.min(1, { message: "Please enter a valid price" })
+		.transform((val) => Number(val))
+		.refine((val) => val > 0, { message: "Please enter a valid price" }),
 	description: z
 		.string()
 		.min(15, { message: "Descritpion is too short, add more details" })
@@ -27,9 +32,7 @@ export const sellClothingSchema = z.object({
 	size: z.string().refine((val) => allSizes.includes(val), {
 		message: "Choose one of the proposed sizes",
 	}),
-	gender: z
-		.string()
-		.refine((val) => clothingGenders.includes(val), {
-			message: "Choose one of the proposed genders",
-		}),
+	gender: z.string().refine((val) => clothingGenders.includes(val), {
+		message: "Choose one of the proposed genders",
+	}),
 });

@@ -127,7 +127,9 @@ const Page: React.FC = () => {
 			<div className={`${classes.container} ${classes.spaceBetween}`}>
 				<div>
 					<Input name="price" defaultValue={state?.data.price} />
-					{state?.error.price && <ErrorMessage message={state?.error.price} />}
+					{state?.error.price && (
+						<ErrorMessage message={state?.error.price[0]} />
+					)}
 
 					<Checkbox
 						name="negotiablePrice"

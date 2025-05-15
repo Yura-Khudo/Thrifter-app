@@ -29,10 +29,11 @@ export async function sellClothing(state: any, formData: FormData) {
 	const condition = formData.get("condition") as string;
 	const size = formData.get("size") as string;
 	const gender = formData.get("gender") as string;
+
 	const validation = sellClothingSchema.safeParse({
 		type,
 		name,
-		price,
+		price: price,
 		description,
 		condition,
 		size,
@@ -57,7 +58,11 @@ export async function sellClothing(state: any, formData: FormData) {
 
 	await dbConnect();
 
-	const clothing = new Clothing({ ...validation.data, negotiablePrice });
+	const clothing = new Clothing({
+		...validation.data,
+		price: Number(price).toFixed(2),
+		negotiablePrice,
+	});
 	await clothing.save();
 	redirect("/");
 }
