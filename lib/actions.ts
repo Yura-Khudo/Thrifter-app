@@ -5,6 +5,7 @@ import dbConnect from "./dbConnect";
 import { clothes } from "@/utils/arrUtils";
 import { sellClothingSchema } from "@/utils/validations";
 import { redirect } from "next/navigation";
+import mongoose from "mongoose";
 
 ///////////////////
 
@@ -147,4 +148,13 @@ export async function filter(state: any, formData: FormData) {
 	const url = `/search?${searchParams.toString()}`;
 
 	redirect(url);
+}
+
+export async function fetchClothingData(clothingId: string) {
+	if (!mongoose.Types.ObjectId.isValid(clothingId)) {
+		return null; // or throw an error, or handle gracefully
+	}
+	await dbConnect();
+	const clothing = await Clothing.findById(clothingId);
+	return clothing;
 }

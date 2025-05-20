@@ -56,91 +56,93 @@ const Page: React.FC = () => {
 
 	return (
 		<form className={classes.form} action={action}>
-			<h1 className={classes.header}>Sell your clothing</h1>
-			<div className={classes.container}>
-				<Input
-					nameRef={inputRef}
-					setCount={handleInputChange}
-					name="name"
-					defaultValue={state?.data.name}
-				/>
-				<div className={classes.validationMessage}>
-					<p className={`${inputCount > 70 && classes.countError}`}>
-						{inputCount}/70
-					</p>
-					{state?.error.name && <ErrorMessage message={state.error.name} />}
-				</div>
-
-				<DropdownMenu
-					handleChange={handleSizeChange}
-					name="type"
-					arr={types || typesOfClothes}
-					defaultValue={
-						(types && types[0]) || state?.data.type || "Choose your type"
-					}
-				/>
-				{state?.error.type && <ErrorMessage message={state.error.type} />}
-			</div>
-			<div className={classes.container}>
-				<DropdownMenu
-					handleChange={handleTypesChange}
-					name="gender"
-					arr={clothingGenders}
-					defaultValue={state?.data.gender || "Choose your gender"}
-				/>
-				{state?.error.gender && <ErrorMessage message={state.error.gender} />}
-				<DropdownMenu
-					name="size"
-					arr={sizes}
-					defaultValue={
-						sizes[0] || state?.data.size || "Choose type of clothing first"
-					}
-				/>
-				{state?.error.size && <ErrorMessage message={state.error.size} />}
-
-				<DropdownMenu
-					name="condition"
-					arr={conditionsOfClothes}
-					defaultValue={state?.data.condition || "Choose your condition"}
-				/>
-				{state?.error.condition && (
-					<ErrorMessage message={state.error.condition} />
-				)}
-			</div>
-
-			<div className={classes.container}>
-				<TextArea
-					descriptionRef={textAreaRef}
-					name="description"
-					defaultValue={state?.data.description}
-					setCount={handleTextAreaChange}
-				/>
-				<div className={classes.validationMessage}>
-					<p className={`${textAreaCount > 400 && classes.countError}`}>
-						{textAreaCount}/400
-					</p>
-					{state?.error.description && (
-						<ErrorMessage message={state.error.description} />
-					)}
-				</div>
-			</div>
-			<div className={`${classes.container} ${classes.spaceBetween}`}>
-				<div>
-					<Input name="price" defaultValue={state?.data.price} />
-					{state?.error.price && (
-						<ErrorMessage message={state?.error.price[0]} />
-					)}
-
-					<Checkbox
-						name="negotiablePrice"
-						strictName="Negotiable price"
-						isChecked={state?.data.negotiablePrice}
+			<div className={classes.main}>
+				<h1 className={classes.header}>Sell your clothing</h1>
+				<div className={classes.container}>
+					<Input
+						nameRef={inputRef}
+						setCount={handleInputChange}
+						name="name"
+						defaultValue={state?.data.name}
 					/>
+					<div className={classes.validationMessage}>
+						<p className={`${inputCount > 70 && classes.countError}`}>
+							{inputCount}/70
+						</p>
+						{state?.error.name && <ErrorMessage message={state.error.name} />}
+					</div>
+
+					<DropdownMenu
+						handleChange={handleSizeChange}
+						name="type"
+						arr={types || typesOfClothes}
+						defaultValue={
+							(types && types[0]) || state?.data.type || "Choose your type"
+						}
+					/>
+					{state?.error.type && <ErrorMessage message={state.error.type} />}
 				</div>
-				<div className={classes.buttonContainer}>
-					<button disabled={isPending} className={classes.button}>
-						{isPending ? "Uploading..." : "Sell"}
-					</button>
+				<div className={classes.container}>
+					<DropdownMenu
+						handleChange={handleTypesChange}
+						name="gender"
+						arr={clothingGenders}
+						defaultValue={state?.data.gender || "Choose your gender"}
+					/>
+					{state?.error.gender && <ErrorMessage message={state.error.gender} />}
+					<DropdownMenu
+						name="size"
+						arr={sizes}
+						defaultValue={
+							sizes[0] || state?.data.size || "Choose type of clothing first"
+						}
+					/>
+					{state?.error.size && <ErrorMessage message={state.error.size} />}
+
+					<DropdownMenu
+						name="condition"
+						arr={conditionsOfClothes}
+						defaultValue={state?.data.condition || "Choose your condition"}
+					/>
+					{state?.error.condition && (
+						<ErrorMessage message={state.error.condition} />
+					)}
+				</div>
+
+				<div className={classes.container}>
+					<TextArea
+						descriptionRef={textAreaRef}
+						name="description"
+						defaultValue={state?.data.description}
+						setCount={handleTextAreaChange}
+					/>
+					<div className={classes.validationMessage}>
+						<p className={`${textAreaCount > 400 && classes.countError}`}>
+							{textAreaCount}/400
+						</p>
+						{state?.error.description && (
+							<ErrorMessage message={state.error.description} />
+						)}
+					</div>
+				</div>
+				<div className={`${classes.container} ${classes.spaceBetween}`}>
+					<div>
+						<Input name="price" defaultValue={state?.data.price} />
+						{state?.error.price && (
+							<ErrorMessage message={state?.error.price[0]} />
+						)}
+
+						<Checkbox
+							name="negotiablePrice"
+							strictName="Negotiable price"
+							isChecked={state?.data.negotiablePrice}
+						/>
+					</div>
+					<div className={classes.buttonContainer}>
+						<button disabled={isPending} className={classes.button}>
+							{isPending ? "Uploading..." : "Sell"}
+						</button>
+					</div>
 				</div>
 			</div>
 		</form>
