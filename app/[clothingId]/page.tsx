@@ -6,7 +6,7 @@ const Page: React.FC<{ params: { clothingId: string } }> = async ({
 }) => {
 	const { clothingId } = await params;
 	const data = await fetchClothingData(clothingId);
-	// console.log(data);
+	console.log(data);
 	return (
 		<div style={{ margin: "0 auto", maxWidth: "1330px", width: "100%" }}>
 			<main

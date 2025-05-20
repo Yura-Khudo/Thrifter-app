@@ -55,7 +55,11 @@ const Page: React.FC = () => {
 	////
 
 	return (
-		<form className={classes.form} action={action}>
+		<form
+			style={{ overflow: "hidden" }}
+			className={classes.form}
+			action={action}
+		>
 			<div className={classes.main}>
 				<h1 className={classes.header}>Sell your clothing</h1>
 				<div className={classes.container}>
