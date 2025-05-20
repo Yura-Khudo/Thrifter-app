@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+	position: relative;
+}
+
+.label {
+	font-size: 1.25rem;
+	font-weight: bolder;
+	letter-spacing: 1px;
+	margin-bottom: 0.25rem;
+}
+
+.input {
+	font-size: 1.25rem;
+	padding: 0.5rem;
+	outline: none;
+	border: 1px solid var(--darkgrey-color);
+	border-radius: 8px;
+}
