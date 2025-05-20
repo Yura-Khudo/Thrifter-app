@@ -70,6 +70,10 @@
 	padding: 0.5rem;
 }
 
+.pickImage {
+	cursor: pointer;
+}
+
 .activeSlide {
 	border: 2px solid var(--primary-color);
 }

@@ -71,6 +71,7 @@ const ImageCarousel: React.FC<{ images?: string[] }> = ({ images }) => {
 							width={100}
 							height={100}
 							onClick={() => selectSlide(i)}
+							className={classes.pickImage}
 						/>
 					</div>
 				))}

@@ -152,7 +152,7 @@ export async function filter(state: any, formData: FormData) {
 
 export async function fetchClothingData(clothingId: string) {
 	if (!mongoose.Types.ObjectId.isValid(clothingId)) {
-		return null; // or throw an error, or handle gracefully
+		return null; // add page 404 later
 	}
 	await dbConnect();
 	const clothing = await Clothing.findById(clothingId);
