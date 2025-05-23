@@ -3,9 +3,11 @@
 import Clothing from "@/models/Clothing";
 import dbConnect from "./dbConnect";
 import { clothes } from "@/utils/arrUtils";
-import { sellClothingSchema } from "@/utils/validations";
+import { sellClothingSchema, registerUserSchema } from "@/utils/validations";
 import { redirect } from "next/navigation";
 import mongoose from "mongoose";
+import User from "@/models/User";
+import bcrypt from "bcrypt";
 
 ///////////////////
 
@@ -34,7 +36,7 @@ export async function sellClothing(state: any, formData: FormData) {
 	const validation = sellClothingSchema.safeParse({
 		type,
 		name,
-		price: price,
+		price,
 		description,
 		condition,
 		size,
@@ -157,4 +159,40 @@ export async function fetchClothingData(clothingId: string) {
 	await dbConnect();
 	const clothing = await Clothing.findById(clothingId);
 	return clothing;
+}
+
+export async function registerUser(state: any, formData: FormData) {
+	const data = {
+		firstName: formData.get("firstName") as string,
+		lastName: formData.get("lastName") as string,
+		email: formData.get("email") as string,
+		password: formData.get("password") as string,
+	};
+
+	const validation = registerUserSchema.safeParse(data);
+
+	if (!validation.success) {
+		return {
+			error: validation.error.flatten().fieldErrors,
+			data,
+		};
+	}
+
+	data.password = await hashPassword(data.password);
+
+	await dbConnect();
+	const user = new User(data);
+	await user.save();
+
+	return redirect("/");
+}
+
+async function hashPassword(password: string) {
+	const saltRounds = 10;
+	const hashPassword = await bcrypt.hash(password, saltRounds);
+	return hashPassword;
+}
+
+async function isValidPassword(password: string, hashedPassword: string) {
+	return await bcrypt.compare(password, hashedPassword);
 }

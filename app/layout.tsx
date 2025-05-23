@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MainNavBar from "@/components/MainHeader/MainHeader";
-import Navbar from "@/components/Navbar/Navbar";
-import { headers } from "next/headers";
+import NavbarToggler from "@/components/NavbarToggler/NavbarToggler";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -25,9 +23,6 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const headersList = await headers();
-	const pathName = headersList.get("current-path");
-
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -38,12 +33,7 @@ export default async function RootLayout({
 						flexDirection: "column",
 					}}
 				>
-					{pathName !== "/register" && pathName !== "/login" && (
-						<>
-							<MainNavBar />
-							<Navbar />
-						</>
-					)}
+					<NavbarToggler />
 
 					{children}
 				</div>

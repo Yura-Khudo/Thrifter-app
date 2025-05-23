@@ -14,9 +14,6 @@ export const sellClothingSchema = z.object({
 		.string()
 		.min(3, { message: "The name of clothing must be at least 3 letters" })
 		.max(70, { message: "The name of clothing must be less than 70 letters" }),
-	// price: z
-	// 	.number({ message: "Please enter valid price" })
-	// 	.nonnegative({ message: "Please enter valid price" }),
 	price: z
 		.string()
 		.min(1, { message: "Please enter a valid price" })
@@ -35,4 +32,26 @@ export const sellClothingSchema = z.object({
 	gender: z.string().refine((val) => clothingGenders.includes(val), {
 		message: "Choose one of the proposed genders",
 	}),
+});
+
+export const registerUserSchema = z.object({
+	firstName: z
+		.string()
+		.min(3, { message: "First Name must be at least 3 letters" })
+		.max(20, { message: "First Name must be less than 20 letters" }),
+	lastName: z
+		.string()
+		.min(3, { message: "Last Name must be at least 3 letters" })
+		.max(20, { message: "Last Name must be less than 20 letters" }),
+	email: z.string().email({ message: "Invalid email address" }),
+	password: z
+		.string()
+		.min(10, { message: "Password is too short" })
+		.max(30, { message: "Password is too long" })
+		.refine((val) => /[A-Z]/.test(val), {
+			message: "Password must contain uppercase letters",
+		})
+		.refine((val) => /\d/.test(val), {
+			message: "Password must contain numbers",
+		}),
 });
