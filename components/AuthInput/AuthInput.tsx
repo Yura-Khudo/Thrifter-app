@@ -29,7 +29,7 @@ const AuthInput: React.FC<{
 				defaultValue={defaultValue}
 			/>
 			{type === "password" && (
-				<span style={{ position: "absolute", right: "0.5rem", top: "37px" }}>
+				<span className={classes.span}>
 					<svg
 						onClick={changeType}
 						xmlns="http://www.w3.org/2000/svg"

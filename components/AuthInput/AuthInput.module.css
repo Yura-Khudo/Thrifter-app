@@ -19,3 +19,9 @@
 	border: 1px solid var(--darkgrey-color);
 	border-radius: 8px;
 }
+
+.span {
+	position: absolute;
+	right: 0.5rem;
+	top: 37px;
+}

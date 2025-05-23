@@ -6,7 +6,7 @@ import { clothes } from "@/utils/arrUtils";
 import { sellClothingSchema, registerUserSchema } from "@/utils/validations";
 import { redirect } from "next/navigation";
 import mongoose from "mongoose";
-import User from "@/models/User";
+import User, { UserInt } from "@/models/User";
 import bcrypt from "bcrypt";
 
 ///////////////////
@@ -180,9 +180,42 @@ export async function registerUser(state: any, formData: FormData) {
 
 	data.password = await hashPassword(data.password);
 
+	//// User already exist check
+
 	await dbConnect();
 	const user = new User(data);
 	await user.save();
+
+	// Auth token
+
+	return redirect("/");
+}
+
+export async function loginUser(state: any, formData: FormData) {
+	const email = formData.get("email") as string;
+	const password = formData.get("password") as string;
+
+	const user = await User.findOne({ email });
+
+	if (!user) {
+		console.log("no user");
+		return {
+			error: ["Incorrect email or password"],
+			data: { email },
+		};
+	}
+
+	const isValidPass = await isValidPassword(password, user.password);
+
+	if (!isValidPass) {
+		console.log("incorrect password");
+		return {
+			error: ["Incorrect email or password"],
+			data: { email },
+		};
+	}
+
+	//// Auth token
 
 	return redirect("/");
 }
