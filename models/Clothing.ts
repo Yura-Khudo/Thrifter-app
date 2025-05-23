@@ -61,5 +61,8 @@ const ClothingSchema = new mongoose.Schema(
 	}
 );
 
-export default mongoose.models.Clothing ||
-	mongoose.model("Clothing", ClothingSchema);
+const Clothing: mongoose.Model<ClothingInt> =
+	mongoose.models.Clothing ||
+	mongoose.model<ClothingInt>("Clothing", ClothingSchema);
+
+export default Clothing;
