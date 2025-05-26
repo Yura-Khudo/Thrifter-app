@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import {
 	allSizes,
 	clothingGenders,
@@ -7,6 +7,7 @@ import {
 } from "@/utils/arrUtils";
 
 export interface ClothingInt extends mongoose.Document {
+	_id: Types.ObjectId;
 	type: string;
 	name: string;
 	description: boolean;

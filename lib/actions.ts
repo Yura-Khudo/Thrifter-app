@@ -6,8 +6,9 @@ import { clothes } from "@/utils/arrUtils";
 import { sellClothingSchema, registerUserSchema } from "@/utils/validations";
 import { redirect } from "next/navigation";
 import mongoose from "mongoose";
-import User, { UserInt } from "@/models/User";
+import User from "@/models/User";
 import bcrypt from "bcrypt";
+import { createSession } from "./session";
 
 ///////////////////
 
@@ -169,9 +170,19 @@ export async function registerUser(state: any, formData: FormData) {
 		password: formData.get("password") as string,
 	};
 
+	await dbConnect();
+
+	const isUser = await User.findOne({ email: data.email });
 	const validation = registerUserSchema.safeParse(data);
 
 	if (!validation.success) {
+		if (isUser) {
+			return {
+				error: validation.error.flatten().fieldErrors,
+				data,
+				user: ["Email already in use"],
+			};
+		}
 		return {
 			error: validation.error.flatten().fieldErrors,
 			data,
@@ -180,13 +191,9 @@ export async function registerUser(state: any, formData: FormData) {
 
 	data.password = await hashPassword(data.password);
 
-	//// User already exist check
-
-	await dbConnect();
 	const user = new User(data);
 	await user.save();
-
-	// Auth token
+	await createSession(user._id);
 
 	return redirect("/");
 }
@@ -198,7 +205,6 @@ export async function loginUser(state: any, formData: FormData) {
 	const user = await User.findOne({ email });
 
 	if (!user) {
-		console.log("no user");
 		return {
 			error: ["Incorrect email or password"],
 			data: { email },
@@ -208,14 +214,12 @@ export async function loginUser(state: any, formData: FormData) {
 	const isValidPass = await isValidPassword(password, user.password);
 
 	if (!isValidPass) {
-		console.log("incorrect password");
 		return {
 			error: ["Incorrect email or password"],
 			data: { email },
 		};
 	}
-
-	//// Auth token
+	await createSession(user._id);
 
 	return redirect("/");
 }

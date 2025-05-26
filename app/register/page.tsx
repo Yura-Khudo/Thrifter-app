@@ -9,7 +9,7 @@ import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 
 const Page: React.FC = () => {
 	const [state, action] = useActionState(registerUser, null);
-
+	console.log(state);
 	return (
 		<main className={classes.main}>
 			<form className={classes.form} action={action}>
@@ -37,6 +37,7 @@ const Page: React.FC = () => {
 					defaultValue={state?.data.email}
 				/>
 				{state?.error.email && <ErrorMessage message={state?.error.email} />}
+				{state?.user && <ErrorMessage message={state?.user} />}
 				<AuthInput
 					name="password"
 					strictName="Password"
@@ -46,6 +47,7 @@ const Page: React.FC = () => {
 				{state?.error.password && (
 					<ErrorMessage message={state?.error.password} />
 				)}
+
 				<button className={classes.button}>Create Account</button>
 				<div className={classes.linkWrapper}>
 					<Link className={classes.link} href="/login">
