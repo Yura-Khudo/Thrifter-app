@@ -24,15 +24,58 @@
 	display: flex;
 	font-size: 1.25rem;
 }
+
+.profileMenu {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.dropdownMenu {
+	position: absolute;
+	border-radius: 0 0 8px 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	top: 70px;
+	width: 100%;
+	background: var(--secondary-color);
+	color: white;
+	z-index: 10;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform 0.2s ease-in-out;
+}
+
+.active {
+	transform: scaleY(1);
+}
+
+.menuNavigation {
+	display: flex;
+	flex-direction: column;
+}
+
+.menuLink {
+	text-decoration: none;
+	padding: 1rem;
+}
+
+.logout {
+	border-top: 1px solid var(--lightgrey-color);
+}
+
+.menuLink:hover {
+	background-color: var(--primary-color);
+}
+
 .profileContainer {
 	display: flex;
 	margin: 0 1rem;
+	height: 100%;
 	align-items: center;
 	cursor: pointer;
-}
-
-.profileContainer:hover .arrow {
-	transform: rotate(315deg);
+	text-decoration: none;
 }
 
 .userIcon {
@@ -47,6 +90,10 @@
 	transform: rotate(135deg);
 	margin-left: 8px;
 	transition: all 0.2s ease-in-out;
+}
+
+.arrowActive {
+	transform: rotate(315deg);
 }
 
 .sellContainer {

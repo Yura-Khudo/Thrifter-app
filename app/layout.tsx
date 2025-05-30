@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarToggler from "@/components/NavbarToggler/NavbarToggler";
+import { currUser } from "@/lib/actions";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -23,6 +24,8 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const user = await currUser();
+
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -33,7 +36,7 @@ export default async function RootLayout({
 						flexDirection: "column",
 					}}
 				>
-					<NavbarToggler />
+					<NavbarToggler user={user} />
 
 					{children}
 				</div>

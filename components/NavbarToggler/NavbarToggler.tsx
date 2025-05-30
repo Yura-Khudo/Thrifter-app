@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import MainHeader from "../MainHeader/MainHeader";
 import Navbar from "../Navbar/Navbar";
 
-const NavbarToggler: React.FC = () => {
+const NavbarToggler: React.FC<{ user?: string }> = ({ user }) => {
 	const pathname = usePathname();
 
 	if (pathname === "/login" || pathname === "/register") {
@@ -12,7 +12,7 @@ const NavbarToggler: React.FC = () => {
 	}
 	return (
 		<>
-			<MainHeader />
+			<MainHeader user={user} />
 			<Navbar />
 		</>
 	);

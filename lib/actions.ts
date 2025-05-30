@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import mongoose from "mongoose";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
-import { createSession } from "./session";
+import { createSession, verifyUser } from "./session";
 
 ///////////////////
 
@@ -193,7 +193,7 @@ export async function registerUser(state: any, formData: FormData) {
 
 	const user = new User(data);
 	await user.save();
-	await createSession(user._id);
+	await createSession(user._id.toString());
 
 	return redirect("/");
 }
@@ -202,6 +202,7 @@ export async function loginUser(state: any, formData: FormData) {
 	const email = formData.get("email") as string;
 	const password = formData.get("password") as string;
 
+	await dbConnect();
 	const user = await User.findOne({ email });
 
 	if (!user) {
@@ -219,9 +220,14 @@ export async function loginUser(state: any, formData: FormData) {
 			data: { email },
 		};
 	}
-	await createSession(user._id);
+	await createSession(user._id.toString());
 
 	return redirect("/");
+}
+
+export async function currUser() {
+	const user = await verifyUser();
+	return user?.userId;
 }
 
 async function hashPassword(password: string) {

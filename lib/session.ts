@@ -6,10 +6,7 @@ import { Types } from "mongoose";
 
 const secret = new TextEncoder().encode(process.env.SECRET);
 
-export async function encrypt(payload: {
-	userId: Types.ObjectId;
-	expires: Date;
-}) {
+export async function encrypt(payload: { userId: string; expires: Date }) {
 	const jwt = await new SignJWT(payload)
 		.setProtectedHeader({ alg: "HS256" })
 		.setIssuedAt()
@@ -25,12 +22,11 @@ export async function decrypt(session: string) {
 		});
 		return payload;
 	} catch (error) {
-		console.error("JWT verification failed");
 		return null;
 	}
 }
 
-export async function createSession(userId: Types.ObjectId) {
+export async function createSession(userId: string) {
 	const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
 	const session = await encrypt({ userId, expires });
 
@@ -49,7 +45,7 @@ export async function verifyUser() {
 		return null;
 	}
 	const data = await decrypt(cookie);
-	if (!data?.userId) {
+	if (!data?.userId || typeof data.userId !== "string") {
 		return null;
 	}
 	return { userId: data.userId };
