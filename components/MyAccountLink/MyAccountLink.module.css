@@ -1,0 +1,10 @@
+.link {
+	color: white;
+	padding: 1.25rem;
+	font-size: 1.125rem;
+	text-decoration: none;
+}
+
+.activeLink {
+	color: var(--primary-color);
+}

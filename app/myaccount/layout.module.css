@@ -1,0 +1,13 @@
+.nav {
+	width: 100%;
+	background: var(--black-color);
+	border-top: 1px solid var(--primary-color);
+}
+
+.linksWrapper {
+	display: flex;
+	justify-content: space-around;
+	max-width: 1330px;
+	color: white;
+	margin: auto;
+}
