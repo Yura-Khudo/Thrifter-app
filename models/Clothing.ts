@@ -15,6 +15,7 @@ export interface ClothingInt extends mongoose.Document {
 	negotiablePrice: boolean;
 	condition: string;
 	size: string;
+	createdBy: mongoose.Schema.Types.ObjectId;
 }
 
 const ClothingSchema = new mongoose.Schema(
@@ -54,6 +55,11 @@ const ClothingSchema = new mongoose.Schema(
 		gender: {
 			type: String,
 			enum: clothingGenders,
+			required: true,
+		},
+		createdBy: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
 			required: true,
 		},
 	},
