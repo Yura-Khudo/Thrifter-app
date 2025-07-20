@@ -120,7 +120,7 @@ const Filter: React.FC = () => {
 						</div>
 					</div>
 					{priceInputError && (
-						<ErrorMessage message="Please enter valid price" />
+						<ErrorMessage message={["Please enter valid price"]} />
 					)}
 					<Checkbox
 						name="negotiablePrice"
