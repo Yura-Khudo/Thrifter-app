@@ -1,0 +1,17 @@
+.container {
+	max-width: 800px;
+	margin: auto;
+	padding: 1rem;
+}
+.heading {
+	font-size: 2rem;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+.description {
+	font-size: 1.125rem;
+	color: var(--black-color);
+	text-align: center;
+	margin-bottom: 2rem;
+}

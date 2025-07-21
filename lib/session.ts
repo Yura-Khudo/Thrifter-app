@@ -2,7 +2,6 @@ import "server-only";
 
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
-import { Types } from "mongoose";
 
 const secret = new TextEncoder().encode(process.env.SECRET);
 

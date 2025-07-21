@@ -15,6 +15,7 @@ export interface ClothingInt extends mongoose.Document {
 	negotiablePrice: boolean;
 	condition: string;
 	size: string;
+	gender: string;
 	createdBy: mongoose.Schema.Types.ObjectId;
 }
 

@@ -1,0 +1,36 @@
+.container {
+	margin: 0 auto;
+	max-width: 1330px;
+	width: 100%;
+}
+.main {
+	margin: 1rem;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr 1fr;
+}
+.info {
+	background: white;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+.header {
+	letter-spacing: 4px;
+}
+.priceContainer {
+	display: flex;
+	align-items: center;
+}
+.price {
+	font-weight: bolder;
+	font-size: 1.125rem;
+}
+.negotiablePrice {
+	display: inline-block;
+	padding: 0.25rem;
+	border: 2px solid var(--darkgrey-color);
+	border-radius: 8px;
+	margin-left: 1rem;
+}

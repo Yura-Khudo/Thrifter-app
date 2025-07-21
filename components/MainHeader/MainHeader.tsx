@@ -19,7 +19,7 @@ const MainHeader: React.FC<{ user?: string }> = ({ user }) => {
 						className={classes.profileMenu}
 					>
 						<Link
-							href={user ? `/users/${user}` : "/login"}
+							href={user ? "/myaccount" : "/login"}
 							className={classes.profileContainer}
 						>
 							<svg
@@ -55,16 +55,22 @@ const MainHeader: React.FC<{ user?: string }> = ({ user }) => {
 							{user && (
 								<>
 									<div className={classes.menuNavigation}>
-										<Link className={classes.menuLink} href="/">
+										<Link
+											className={classes.menuLink}
+											href="/myaccount/listing"
+										>
 											My listing
 										</Link>
-										<Link className={classes.menuLink} href="/">
+										<Link className={classes.menuLink} href="/myaccount/chats">
 											Chats
 										</Link>
-										<Link className={classes.menuLink} href="/">
+										<Link className={classes.menuLink} href="/myaccount">
 											Profile
 										</Link>
-										<Link className={classes.menuLink} href="/">
+										<Link
+											className={classes.menuLink}
+											href="/myaccount/settings"
+										>
 											Settings
 										</Link>
 									</div>

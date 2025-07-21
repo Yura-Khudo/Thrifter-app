@@ -10,7 +10,9 @@ const Checkbox: React.FC<{
 	const [checked, setChecked] = useState(isChecked);
 	return (
 		<div className={classes.container}>
-			<label htmlFor={name}>{firstLetterUppercase(strictName || name)}</label>
+			<label className={classes.label} htmlFor={name}>
+				{firstLetterUppercase(strictName || name)}
+			</label>
 			<input
 				key={name}
 				className={classes.input}

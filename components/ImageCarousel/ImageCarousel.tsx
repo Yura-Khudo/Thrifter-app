@@ -5,14 +5,8 @@ import classes from "./ImageCarousel.module.css";
 import { useState } from "react";
 
 const imagesArr = [
-	"/images/test.jpg",
 	"/images/pants.jpg",
-	"/images/testImg2.webp",
-	"/images/test.jpg",
-	"/images/pants.jpg",
-	"/images/testImg2.webp",
-	"/images/test.jpg",
-	"/images/pants.jpg",
+	"/images/testImg1.avif",
 	"/images/testImg2.webp",
 ];
 

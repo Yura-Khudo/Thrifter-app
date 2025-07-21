@@ -1,10 +1,10 @@
 "use server";
 
-import Clothing from "@/models/Clothing";
+import Clothing, { ClothingInt } from "@/models/Clothing";
 import dbConnect from "./dbConnect";
 import { clothes } from "@/utils/arrUtils";
 import { sellClothingSchema, registerUserSchema } from "@/utils/validations";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import mongoose from "mongoose";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
@@ -24,6 +24,10 @@ export async function updateDB(state: any, formData: FormData) {
 ///////////////////
 
 export async function sellClothing(state: any, formData: FormData) {
+	const session = await verifyUser();
+	if (!session) {
+		return redirect("/login");
+	}
 	const negotiablePrice =
 		(formData.get("negotiablePrice") as string | null) === "on" ? true : false;
 	const type = formData.get("type") as string;
@@ -66,9 +70,15 @@ export async function sellClothing(state: any, formData: FormData) {
 		...validation.data,
 		price: Number(price).toFixed(2),
 		negotiablePrice,
+		createdBy: new mongoose.Types.ObjectId(session.userId),
 	});
 	await clothing.save();
-	redirect("/");
+
+	await User.findByIdAndUpdate(session.userId, {
+		$push: { listings: clothing._id },
+	});
+
+	redirect("/myaccount/listing");
 }
 
 export async function findClothes(params: {
@@ -155,10 +165,13 @@ export async function filter(state: any, formData: FormData) {
 
 export async function fetchClothingData(clothingId: string) {
 	if (!mongoose.Types.ObjectId.isValid(clothingId)) {
-		return null; // add page 404 later
+		notFound();
 	}
 	await dbConnect();
 	const clothing = await Clothing.findById(clothingId);
+	if (!clothing) {
+		notFound();
+	}
 	return clothing;
 }
 
@@ -223,6 +236,20 @@ export async function loginUser(state: any, formData: FormData) {
 	await createSession(user._id.toString());
 
 	return redirect("/");
+}
+
+export async function getUserListings() {
+	const userId = await currUser();
+	if (!userId) {
+		return redirect("/login");
+	}
+
+	const user = await User.findById(userId).populate("listings");
+	if (!user) {
+		return;
+	}
+
+	return user.listings as ClothingInt[];
 }
 
 export async function currUser() {
