@@ -21,8 +21,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Create .env file. 
 Add: 
-MONGODB_URI= 'mongodb+srv://publicUser:3nkTjMevliR5Xe6Q@cluster0.m1sjmtq.mongodb.net/Online_shop?retryWrites=true&w=majority&appName=Cluster0',
-for database to work
+MONGODB_URI= 'mongodb+srv://publicUser:3nkTjMevliR5Xe6Q@cluster0.m1sjmtq.mongodb.net/Online_shop?retryWrites=true&w=majority&appName=Cluster0'
 SECRET= 'asmbov832nsSh3Sn219vSndfsi1SADnreninprtnDSFjgfndfdfdDfdnsj318',
-for session purposes
+
+It's required for database and session to work
+
 Now you're good to go
